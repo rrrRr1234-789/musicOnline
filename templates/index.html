@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Home | musicOnline.com{% endblock %}
+{% block content %}
+  <section class="hero-panel">
+    <h1>Find and sell vinyl music</h1>
+    <form class="search-strip" action="{{ url_for('search') }}" method="get">
+      <input type="search" name="q" placeholder="Search by artist, album, single or EP" maxlength="100" required>
+      <button type="submit">Search</button>
+    </form>
+  </section>
+
+  <section class="section-block">
+    <h2>Latest Vinyl Additions</h2>
+    <div class="record-grid">
+      {% for vinyl in latest %}
+        {% include "_record_card.html" %}
+      {% endfor %}
+    </div>
+  </section>
+{% endblock %}
