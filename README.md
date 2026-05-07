@@ -1,6 +1,6 @@
 # musicOnline.com
 
-Dynamic vinyl record website for HP2T 48 Assessment 2, Tasks 2-5.
+
 
 ## Run
 
