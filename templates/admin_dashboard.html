@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard | musicOnline.com{% endblock %}
+{% block content %}
+  <section class="admin-layout">
+    <aside class="admin-side">
+      <a href="{{ url_for('admin_dashboard') }}">Dashboard</a>
+      <a href="{{ url_for('admin_records') }}">Manage Records</a>
+      <a href="{{ url_for('admin_add_record') }}">Add Record</a>
+      <a href="{{ url_for('logout') }}">Logout</a>
+    </aside>
+    <div class="admin-main">
+      <h1>Overview</h1>
+      <div class="summary-grid">
+        <article><strong>{{ total_vinyls }}</strong><span>Total vinyls</span></article>
+        <article><strong>{{ total_users }}</strong><span>Registered users</span></article>
+        <article><strong>0</strong><span>Pending review</span></article>
+      </div>
+      <h2>Recent User Submitted Vinyl Records</h2>
+      {% include "_admin_table.html" %}
+    </div>
+  </section>
+{% endblock %}
