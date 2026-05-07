@@ -1,0 +1,32 @@
+<div class="table-wrap">
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Artist</th>
+        <th>Title</th>
+        <th>Price</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for vinyl in records %}
+        <tr>
+          <td>{{ vinyl.id }}</td>
+          <td>{{ vinyl.artist }}</td>
+          <td>{{ vinyl.album }}</td>
+          <td>GBP {{ "%.2f"|format(vinyl.price) }}</td>
+          <td>{{ vinyl.status }}</td>
+          <td class="actions">
+            <a href="{{ url_for('vinyl_details', id=vinyl.id) }}">View</a>
+            <a href="{{ url_for('admin_edit_record', id=vinyl.id) }}">Edit</a>
+            <form method="post" action="{{ url_for('admin_delete_record', id=vinyl.id) }}">
+              <button type="submit">Delete</button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
