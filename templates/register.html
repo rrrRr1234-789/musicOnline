@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Register | musicOnline.com{% endblock %}
+{% block content %}
+  <section class="form-panel">
+    <h1>User Registration</h1>
+    <form method="post">
+      <label>First name <input name="firstName" required pattern="[A-Za-z ]{2,50}"></label>
+      <label>Surname <input name="surname" required pattern="[A-Za-z ]{2,50}"></label>
+      <label>Email <input type="email" name="email" required></label>
+      <label>Phone <input name="phoneNo" required pattern="[0-9+ ]{7,20}"></label>
+      <label>Password <input type="password" name="password" required minlength="8"></label>
+      <label>Confirm password <input type="password" name="confirmPassword" required minlength="8"></label>
+      <button type="submit">Register</button>
+    </form>
+  </section>
+{% endblock %}
