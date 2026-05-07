@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Manage Records | musicOnline.com{% endblock %}
+{% block content %}
+  <section class="admin-layout">
+    <aside class="admin-side">
+      <a href="{{ url_for('admin_dashboard') }}">Dashboard</a>
+      <a href="{{ url_for('admin_records') }}">Manage Records</a>
+      <a href="{{ url_for('admin_add_record') }}">Add Record</a>
+      <a href="{{ url_for('logout') }}">Logout</a>
+    </aside>
+    <div class="admin-main">
+      <div class="dashboard-head">
+        <h1>Manage Records</h1>
+        <a class="button" href="{{ url_for('admin_add_record') }}">Add Record</a>
+      </div>
+      {% include "_admin_table.html" %}
+    </div>
+  </section>
+{% endblock %}
