@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}{{ vinyl.album }} | musicOnline.com{% endblock %}
+{% block content %}
+  <section class="detail-layout">
+    <div class="cover detail-cover {{ vinyl.albumCover }}"><span>{{ vinyl.artist[:1] }}{{ vinyl.album[:1] }}</span></div>
+    <article class="detail-copy">
+      <p class="label">{{ vinyl.recordType }} / {{ vinyl.genre }}</p>
+      <h1>{{ vinyl.artist }} - {{ vinyl.album }}</h1>
+      <dl>
+        <div><dt>Release date</dt><dd>{{ vinyl.releaseDate or vinyl.year }}</dd></div>
+        <div><dt>Condition</dt><dd>{{ vinyl.condition }}</dd></div>
+        <div><dt>Price</dt><dd>GBP {{ "%.2f"|format(vinyl.price) }}</dd></div>
+        <div><dt>Seller</dt><dd>{{ vinyl.firstName }} {{ vinyl.surname }} ({{ vinyl.email }})</dd></div>
+      </dl>
+      <p>{{ vinyl.description }}</p>
+      <a class="button" href="{{ url_for('search') }}">Back to Search</a>
+    </article>
+  </section>
+{% endblock %}
