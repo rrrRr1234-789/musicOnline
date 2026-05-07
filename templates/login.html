@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Login | musicOnline.com{% endblock %}
+{% block content %}
+  <section class="form-panel">
+    <h1>User Login</h1>
+    <form method="post">
+      <label>Email <input type="email" name="email" required value="user1@musiconline.com"></label>
+      <label>Password <input type="password" name="password" required value="User12345"></label>
+      <button type="submit">Login</button>
+    </form>
+  </section>
+{% endblock %}
