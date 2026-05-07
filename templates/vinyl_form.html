@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}{{ title }} | musicOnline.com{% endblock %}
+{% block content %}
+  <section class="form-panel wide">
+    <h1>{{ title }}</h1>
+    <form method="post" class="two-column-form">
+      <label>Artist <input name="artist" required maxlength="100" value="{{ vinyl.artist if vinyl else '' }}"></label>
+      <label>Album / Single / EP <input name="album" required maxlength="150" value="{{ vinyl.album if vinyl else '' }}"></label>
+      <label>Record type
+        <select name="recordType">
+          {% for type in ["Album", "Single", "EP"] %}
+            <option value="{{ type }}" {% if vinyl and vinyl.recordType == type %}selected{% endif %}>{{ type }}</option>
+          {% endfor %}
+        </select>
+      </label>
+      <label>Release date <input type="date" name="releaseDate" value="{{ vinyl.releaseDate if vinyl else '' }}"></label>
+      <label>Genre <input name="genre" maxlength="50" value="{{ vinyl.genre if vinyl else '' }}"></label>
+      <label>Condition <input name="condition" maxlength="50" value="{{ vinyl.condition if vinyl else '' }}"></label>
+      <label>Price <input type="number" step="0.01" min="0.01" name="price" required value="{{ vinyl.price if vinyl else '' }}"></label>
+      <label>Cover style
+        <select name="albumCover">
+          {% for cover in ["cover-1", "cover-2", "cover-3", "cover-4", "cover-5", "cover-6"] %}
+            <option value="{{ cover }}" {% if vinyl and vinyl.albumCover == cover %}selected{% endif %}>{{ cover }}</option>
+          {% endfor %}
+        </select>
+      </label>
+      <label class="full">Description <textarea name="description" rows="4">{{ vinyl.description if vinyl else '' }}</textarea></label>
+      <button type="submit">Save</button>
+      <a class="button ghost" href="{{ url_for('admin_records') if admin_mode else url_for('dashboard') }}">Cancel</a>
+    </form>
+  </section>
+{% endblock %}
