@@ -1,0 +1,19 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+
+# Local environment and runtime data
+.env
+database/*.sqlite3
+instance/
+
+# Assignment evidence and generated artifacts
+screenshots/
+evidence_pages/
+docx-rendered/
+reference-wireframes/
+tools/
+
+# Editors
+.vscode/
+.idea/
