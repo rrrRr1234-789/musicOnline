@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}musicOnline.com{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  </head>
+  <body>
+    <div class="page-backdrop" aria-hidden="true"></div>
+    <div class="browser-frame">
+      <div class="browser-bar">
+        <span></span><span></span><span></span>
+        <strong>musicOnline.com</strong>
+      </div>
+
+      <header class="site-header">
+        <a class="logo" href="{{ url_for('index') }}"><span>mO</span> musicOnline</a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="{{ url_for('index') }}">Home</a>
+          <a href="{{ url_for('search') }}">Search</a>
+          {% if g.user %}
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+          {% elif g.admin %}
+            <a href="{{ url_for('admin_dashboard') }}">Admin</a>
+            <a href="{{ url_for('logout') }}">Logout</a>
+          {% else %}
+            <a href="{{ url_for('register') }}">Register</a>
+            <a href="{{ url_for('login') }}">Login</a>
+            <a href="{{ url_for('admin_login') }}">Admin</a>
+          {% endif %}
+        </nav>
+      </header>
+
+      {% for message in get_flashed_messages() %}
+        <div class="flash">{{ message }}</div>
+      {% endfor %}
+
+      <main>
+        {% block content %}{% endblock %}
+      </main>
+
+      <footer class="footer">
+        <span>Contact: support@musiconline.com</span>
+        <span>Copyright 2026 musicOnline</span>
+      </footer>
+    </div>
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  </body>
+</html>
