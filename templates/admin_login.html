@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Admin Login | musicOnline.com{% endblock %}
+{% block content %}
+  <section class="form-panel">
+    <h1>Admin Login</h1>
+    <form method="post">
+      <label>Username or email <input name="username" required value="admin1"></label>
+      <label>Password <input type="password" name="password" required value="Admin12345"></label>
+      <button type="submit">Login</button>
+    </form>
+  </section>
+{% endblock %}
