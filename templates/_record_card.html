@@ -1,0 +1,8 @@
+<article class="record-card">
+  <div class="cover {{ vinyl.albumCover|default('cover-1') }}">
+    <span>{{ vinyl.artist[:1] }}{{ vinyl.album[:1] }}</span>
+  </div>
+  <h3>{{ vinyl.artist }} / {{ vinyl.album }}</h3>
+  <p>{{ vinyl.genre }} | GBP {{ "%.2f"|format(vinyl.price) }}</p>
+  <a class="button small" href="{{ url_for('vinyl_details', id=vinyl.id) }}">View</a>
+</article>
